@@ -2,3 +2,33 @@
 # all we do is just format it, make it pretty for reading, i hope it's gonna help you to work;
 # linux kernel version: Linux 4.19.0-18-amd64 (debian 10)
 # author: adan_shaw@qq.com 2024/02/21 in shanghai
+# chinses notes:
+
+
+
+由于linux kernel 头文件, 变动的可能性不大, 所以是可以保留的;
+linux 头文件, 在debian 系统中, 一般就三种类型:
+	apt-get install linux-headers-amd64					# 普通桌面PC linux-headers
+	apt-get install linux-headers-cloud-amd64		# 云server linux-headers (不会在/usr/include/linux 里面的新增头文件, 很奇怪)
+	apt-get install linux-headers-rt-amd64			# real-time linux-headers (不会在/usr/include/linux 里面的新增头文件, 很奇怪)
+
+	安装过程中, 会触发linux kernel 重新编译, 注意!!
+
+
+
+任何的linux 用户态应用, 都不会对/usr/include/linux 中的头文件数量, 有任何影响, 
+这个是内核态的, 对应的是linux 对应开启了那些模块, 基本不会变动, 
+一旦安装了linux-headers, 那么linux-headers 的所有文件, 就都齐全了, 所以有保留的价值;
+
+而且, /usr/include/linux 里面的头文件, 是通用的, 跟通用tcpip 协议栈头文件一样, 
+只有/usr/include/x86_64-linux-gnu 里面的, 才是特异的平台差异文件;
+
+debian linux 头文件布局如下:
+	/usr/include/*                通用tcp/ip 协议栈头文件, 面向posix API, 可以做跨平台编程;
+	/usr/include/linux            通用linux 内核态头文件, 面向linux API, 可以做跨linux 版本的编程;
+	/usr/include/x86_64-linux-gnu 本平台的linux 内核态头文件, 面向自身系统运行, 不可以做任何'跨平台/跨linux 版本'的编程;
+
+
+
+因此, 对于这种一安装就不会变, 而且经常用在linux 内核态编程, 或者tcp/ip 协议栈解析的文件, 做一个便捷性阅读改造, 也是不错的;
+
