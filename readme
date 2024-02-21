@@ -1,0 +1,4 @@
+# this is a tcpip stack headfile for linux, mostly the protocol alive, if it was a dead network protocol, then we gonna ignored it;
+# all we do is just format it, make it pretty for reading, i hope it's gonna help you to work;
+# linux kernel version: Linux 4.19.0-18-amd64 (debian 10)
+# author: adan_shaw@qq.com 2024/02/21 in shanghai
