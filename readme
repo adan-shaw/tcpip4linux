@@ -20,13 +20,14 @@ linux 头文件, 在debian 系统中, 一般就三种类型:
 这个是内核态的, 对应的是linux 对应开启了那些模块, 基本不会变动, 
 一旦安装了linux-headers, 那么linux-headers 的所有文件, 就都齐全了, 所以有保留的价值;
 
-而且, /usr/include/linux 里面的头文件, 是通用的, 跟通用tcpip 协议栈头文件一样, 
+而且, /usr/include/linux 里面的头文件, 是通用的, 跟通用tcpip 协议栈头文件一样;(/usr/include/sys 里面的头文件, 也是通用的)
 只有/usr/include/x86_64-linux-gnu 里面的, 才是特异的平台差异文件;
 
 debian linux 头文件布局如下:
 	/usr/include/*                通用tcp/ip 协议栈头文件, 面向posix API, 可以做跨平台编程;
 	/usr/include/linux            通用linux 内核态头文件, 面向linux API, 可以做跨linux 版本的编程;
 	/usr/include/x86_64-linux-gnu 本平台的linux 内核态头文件, 面向自身系统运行, 不可以做任何'跨平台/跨linux 版本'的编程;
+	/usr/include/sys              一般情况下, 是通用linux 系统文件, 用来屏蔽/usr/include/x86_64-linux-gnu 的自身差异, 实现跨linux 版本的编程;
 
 
 
